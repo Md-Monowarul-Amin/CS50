@@ -1,0 +1,37 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <h6>Following</h6>
+    <p> {{following}} </p>
+    <h6> Followers </h6>
+    <p> {{followers}} </p>
+
+    {% if not follow %}
+        <a href="{% url 'follow_user' post_user_id %}"><button>Follow</button></a>
+    {% else %}
+        <a href="{% url 'unfollow_user' post_user_id %}"><button>Unfollow</button></a>
+    {% endif %}
+
+    {% for post in posts %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <a href="{% url 'profile' post.user.id %}">{{ post.user }}</a><br>
+                {% if post.user == current_user %}
+                    <a href="">Edit</a>
+                {% endif %}
+                <p class="card-text"> {{ post.post_text }} </p>
+                <a href="{% url 'increase_like' post.id %}"><img src="static/network/love.png" alt="love_icon" style="width: 30px; height: 30px"></a>
+                <h6>Likes:</h6> 
+                <h6>{{post.like_count}}</h6>
+                <h6>Comment</h6>
+                <form action="">
+                    <input type="text" name="comment" placeholder="Comment" >
+                </form>
+            </div>
+        
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}

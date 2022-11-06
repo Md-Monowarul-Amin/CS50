@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate</title>
+
+    <style>
+        @keyframes move{
+            0% {
+                left: 0%;
+                font-size: 20px;
+                color: red;
+            }
+            50%{
+                left: 40%;
+                font-size: 100px;
+                color: blue;
+            }
+            100%{
+                left: 0%;
+                font-size: 20px;
+                color: red;
+            }
+        }
+
+        h1 {
+            position: relative;
+            animation-name: move;
+            animation-duration: 5s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            const h1 = document.querySelector('h1');
+            h1.style.animationPlayState = "running";
+
+            document.querySelector('#bn').onclick = () => {
+                console.log("button clicked");
+                if(h1.style.animationPlayState === 'paused'){
+                    h1.style.animationPlayState = 'running';
+                }
+                else{
+                    h1.style.animationPlayState = 'paused';
+                }
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <button id = "bn">Click Here</button>
+    <h1>Eid </h1> 
+    <h1> Mubarak!</h1>
+    
+</body>
+</html>
