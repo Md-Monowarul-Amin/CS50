@@ -1,0 +1,18 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h1>Listing: {{listing.title}}</h1>
+    <img src={{listing.image}} alt="Girl in a jacket">
+    <p>{{listing.description}}</p>
+    <h2>$ {{listing.current_bid}}</h2>
+    <form action="">
+        <label for="Bid Price">Bid Price:</label>
+        <input type="number" id="bidprice" name="bidprice"><br><br>
+        <input type="submit" value="Add Your Bid">
+    </form>
+    <h3>Details:</h3>
+    <ul>
+        <li>Listed By: {{listing.created_by}}</li>
+        <li>Category: {{listing.category}}</li>
+    </ul>
+{% endblock%}
